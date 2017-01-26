@@ -8,15 +8,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "WC"
+    "url": "https://github.com/KatyaSharko/WC"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "gulp-open": "^2.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-uglify": "^2.0.1",
     "karma": "^1.4.0"
   }
 }
+
