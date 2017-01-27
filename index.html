@@ -5,7 +5,8 @@
     <title>Word Clock</title>
     <link rel="stylesheet" href="/styles/main.css">
     <script src="http://localhost:35729/livereload.js"></script>
-    <script src="/scripts/main.js"></script>
+    <script src="/node_modules/requirejs/require.js"></script>
+    <script src="/src/scripts/main.js"></script>
 </head>
 <body>
     <div class="title">Word Clock</div>
@@ -79,10 +80,10 @@
         <span class="item">S</span>
         <span class="item">U</span>
         <!--5-->
-        <span class="item 4min 14min">F</span>
-        <span class="item 4min 14min">O</span>
-        <span class="item 4min 14min">U</span>
-        <span class="item 4min 14min">R</span>
+        <span class="item 14min">F</span>
+        <span class="item 14min">O</span>
+        <span class="item 14min">U</span>
+        <span class="item 14min">R</span>
         <span class="item 14min">T</span>
         <span class="item 14min">E</span>
         <span class="item 14min">E</span>
@@ -164,12 +165,12 @@
         <span class="item 6hr">I</span>
         <span class="item 6hr">X</span>
         <!--10-->
-        <span class="item 12hr">T</span>
-        <span class="item 12hr">W</span>
-        <span class="item 12hr">E</span>
-        <span class="item 12hr">L</span>
-        <span class="item 12hr">V</span>
-        <span class="item 12hr">E</span>
+        <span class="item 0hr 12hr">T</span>
+        <span class="item 0hr 12hr">W</span>
+        <span class="item 0hr 12hr">E</span>
+        <span class="item 0hr 12hr">L</span>
+        <span class="item 0hr 12hr">V</span>
+        <span class="item 0hr 12hr">E</span>
         <span class="item">T</span>
         <span class="item 4hr">F</span>
         <span class="item 4hr">O</span>
@@ -198,6 +199,23 @@
         <span class="item 9hr">N</span>
         <span class="item 9hr">E</span>
         <!--12-->
+        <span class="item 11hr">E</span>
+        <span class="item 11hr">L</span>
+        <span class="item 11hr">E</span>
+        <span class="item 11hr">V</span>
+        <span class="item 11hr">E</span>
+        <span class="item 11hr">N</span>
+        <span class="item">R</span>
+        <span class="item">E</span>
+        <span class="item">E</span>
+        <span class="item">C</span>
+        <span class="item">D</span>
+        <span class="item">C</span>
+        <span class="item">P</span>
+        <span class="item">O</span>
+        <span class="item">I</span>
+        <span class="item">K</span>
+        <!--13-->
         <span class="item 10hr">T</span>
         <span class="item 10hr">E</span>
         <span class="item 10hr">N</span>
@@ -214,7 +232,7 @@
         <span class="item oclock">O</span>
         <span class="item oclock">C</span>
         <span class="item oclock">K</span>
-        <!--13-->
+        <!--14-->
         <span class="item in">I</span>
         <span class="item in">N</span>
         <span class="item">O</span>
@@ -231,7 +249,7 @@
         <span class="item noon afternoon">O</span>
         <span class="item noon afternoon">O</span>
         <span class="item noon afternoon">N</span>
-        <!--14-->
+        <!--15-->
         <span class="item morning">M</span>
         <span class="item morning">O</span>
         <span class="item morning">R</span>
@@ -248,7 +266,7 @@
         <span class="item night">G</span>
         <span class="item night">H</span>
         <span class="item night">T</span>
-        <!--15-->
+        <!--16-->
         <span class="item evening">E</span>
         <span class="item evening">V</span>
         <span class="item evening">E</span>
@@ -265,23 +283,23 @@
         <span class="item">O</span>
         <span class="item">L</span>
         <span class="item">D</span>
-        <!--16-->
-        <span class="item">C</span>
-        <span class="item">O</span>
-        <span class="item">O</span>
-        <span class="item">L</span>
-        <span class="item">E</span>
-        <span class="item">T</span>
-        <span class="item">W</span>
-        <span class="item">A</span>
-        <span class="item">R</span>
-        <span class="item">M</span>
-        <span class="item">U</span>
-        <span class="item">R</span>
-        <span class="item">H</span>
-        <span class="item">O</span>
-        <span class="item">T</span>
-        <span class="item">A</span>
+        <!--&lt;!&ndash;16&ndash;&gt;-->
+        <!--<span class="item">C</span>-->
+        <!--<span class="item">O</span>-->
+        <!--<span class="item">O</span>-->
+        <!--<span class="item">L</span>-->
+        <!--<span class="item">E</span>-->
+        <!--<span class="item">T</span>-->
+        <!--<span class="item">W</span>-->
+        <!--<span class="item">A</span>-->
+        <!--<span class="item">R</span>-->
+        <!--<span class="item">M</span>-->
+        <!--<span class="item">U</span>-->
+        <!--<span class="item">R</span>-->
+        <!--<span class="item">H</span>-->
+        <!--<span class="item">O</span>-->
+        <!--<span class="item">T</span>-->
+        <!--<span class="item">A</span>-->
     </div>
 
 </body>

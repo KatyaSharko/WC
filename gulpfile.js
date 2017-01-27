@@ -7,7 +7,7 @@ gulp.task('styles', function() {
         concat = require('gulp-concat');
     return gulp.src('src/css/*.css')
         .pipe(concat('main.css'))
-        .pipe(cleanCSS())
+        // .pipe(cleanCSS())
         .pipe(gulp.dest('styles'));
 
 });
@@ -17,7 +17,7 @@ gulp.task('build-js', function() {
         concat = require('gulp-concat');
     return gulp.src('src/scripts/*.js')
         .pipe(concat('main.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest('scripts/'));
 });
 

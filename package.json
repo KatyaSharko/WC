@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "gulp-open": "^2.0.0"
+    "gulp-open": "^2.0.0",
+    "requirejs": "^2.3.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -25,4 +26,3 @@
     "karma": "^1.4.0"
   }
 }
-
