@@ -4,7 +4,8 @@
   "description": "Word Clock",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start karma.conf.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,12 @@
     "gulp-concat": "^2.6.1",
     "gulp-livereload": "^3.8.1",
     "gulp-uglify": "^2.0.1",
-    "karma": "^1.4.0"
+    "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-html2js-preprocessor": "^1.1.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-requirejs": "^1.1.0"
   }
 }

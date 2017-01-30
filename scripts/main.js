@@ -35,8 +35,8 @@ define(function(){
     'use strict';
 
     function ParseTime(time){
-        this.hours = this.findHours(time);
-        this.minutes = this.findMinutes(time);
+        this.hours = (time) ? this.findHours(time) : 0;
+        this.minutes = (time) ? this.findMinutes(time) : 0;
     }
 
     ParseTime.prototype = {
@@ -55,8 +55,8 @@ define(function(){
     'use strict';
 
     function ShowTime(hours, minutes){
-        this.hours = hours;
-        this.minutes = minutes;
+        this.hours = (hours) ? hours : 0;
+        this.minutes = (minutes) ? minutes : 0;
         this.currentTime = [];
     }
 

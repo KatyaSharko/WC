@@ -2,8 +2,8 @@ define(function(){
     'use strict';
 
     function ShowTime(hours, minutes){
-        this.hours = hours;
-        this.minutes = minutes;
+        this.hours = (hours) ? hours : 0;
+        this.minutes = (minutes) ? minutes : 0;
         this.currentTime = [];
     }
 
