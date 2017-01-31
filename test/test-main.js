@@ -13,7 +13,7 @@ requirejs.config({
 
     // ask Require.js to load these files (all our tests)
     deps: [
-        'base/test/parseTimeSpec.js',
+        // 'base/test/parseTimeSpec.js',
         'base/test/showTimeSpec.js'
     ],
 

@@ -3,7 +3,7 @@ body{
 }
 
 .title{
-    margin-top: 25px;
+    margin-top: 20px;
     text-align: center;
     font-family: Arial, sans-serif;
     font-size: 40px;
@@ -13,7 +13,7 @@ body{
 
 .clock{
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 30px 50px;
     background-color: #2f2f2f;
     width: 640px;
