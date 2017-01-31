@@ -51,7 +51,6 @@ define(function(){
                 this.addTimeItem(selector);
             }
             else if((this.hours === 12) && (this.minutes === 0)){
-                console.log('noon');
                 var selector = 'noon';
                 this.addTimeItem(selector);
             }
@@ -121,7 +120,6 @@ define(function(){
 
         },
 
-
         displayTime: function(){
             this.timeToDisplay();
             for(var i = 0; i < this.currentTime.length; i++){
@@ -131,11 +129,14 @@ define(function(){
 
         eraseCurrentTime: function(){
             var timeToErase = document.getElementsByClassName('light');
-            for(var i = 0; i < timeToErase.length; i++){
+            var counter = timeToErase.length;
+            for(var i = 0; i < counter; i++){
                 timeToErase[0].classList.remove('light');
             }
+            this.currentTime = [];
         }
     };
+
     return ShowTime;
 
 });

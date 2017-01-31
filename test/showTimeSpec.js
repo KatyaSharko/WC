@@ -1,7 +1,7 @@
 define(['src/scripts/showTime'], function (ShowTime) {
     'use strict';
 
-    //Empty incoming parameter
+    //Created without parameter
 
     describe('Test showTime module created without parameters ', function () {
         var showTime;
@@ -69,7 +69,7 @@ define(['src/scripts/showTime'], function (ShowTime) {
 
     });
 
-    //Created with parameters assosiated with some data
+    //Created with parameters associated with some data
 
     describe('Test showTime module created with parameters ', function () {
         var showTime;
@@ -347,7 +347,67 @@ define(['src/scripts/showTime'], function (ShowTime) {
 
         //tests for method timeToDisplay
 
+        it('expects method timeToDisplay for 10 hours 20 minutes change variable currentTime length to 29', function () {
+            showTime.hours = 10;
+            showTime.minutes = 20;
+            showTime.timeToDisplay();
+            expect(showTime.currentTime.length).toBe(29);
+        });
 
+        it('expects method timeToDisplay for 10 hours 40 minutes change variable currentTime length to 30', function () {
+            showTime.hours = 10;
+            showTime.minutes = 40;
+            showTime.timeToDisplay();
+            expect(showTime.currentTime.length).toBe(30);
+        });
+
+        it('expects method timeToDisplay for 10 hours 0 minutes change variable currentTime length to 25', function () {
+            showTime.hours = 10;
+            showTime.timeToDisplay();
+            expect(showTime.currentTime.length).toBe(25);
+        });
+
+        it('expects method timeToDisplay for 0 hours 0 minutes change variable currentTime length to 12', function () {
+            showTime.timeToDisplay();
+            expect(showTime.currentTime.length).toBe(12);
+        });
+
+        it('expects method timeToDisplay for 12 hours 0 minutes change variable currentTime length to 8', function () {
+            showTime.hours = 12;
+            showTime.timeToDisplay();
+            expect(showTime.currentTime.length).toBe(8);
+        });
+
+        //tests for method displayTime
+
+        it('expects method displayTime for 12 hours 0 minutes add class "light" to all elements in variable currentTime', function () {
+            var time = ['I', 'T', 'I', 'S', 'N', 'O', 'O', 'N'];
+
+            showTime.hours = 12;
+            showTime.displayTime();
+
+            var items = document.getElementsByClassName('light');
+            var itemsValues = [];
+            for (var i = 0; i < items.length; i++)
+                itemsValues.push(items[i].innerHTML);
+
+            expect(showTime.currentTime.length).toBe(items.length);
+            for (i = 0; i < itemsValues.length; i++)
+                expect(time).toContain(itemsValues[i]);
+        });
+
+        //tests for method eraseCurrentTime
+
+        it('expects method eraseCurrentTime erase class "light" from all elements in variable currentTime', function () {
+            showTime.hours = 12;
+            showTime.displayTime();
+            showTime.eraseCurrentTime();
+            var items = document.getElementsByClassName('light');
+            expect(items.length).toBe(0);
+            expect(showTime.currentTime.length).toBe(0);
+
+        });
 
     });
+
 });

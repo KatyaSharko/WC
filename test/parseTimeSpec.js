@@ -40,7 +40,7 @@ define(['src/scripts/parseTime'], function(ParseTime){
 
     });
 
-    //Pass parameter assosiated with some date
+    //Pass parameter associated with some date
 
     describe('Test parseTime module created with parameter', function() {
 

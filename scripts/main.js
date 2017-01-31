@@ -9,8 +9,7 @@ requirejs.config({
 requirejs(['parseTime', 'showTime'], function (ParseTime, ShowTime) {
     'use strict';
 
-
-    function start (trigger) {
+    function displayTime (trigger) {
         var date = new Date();
         var parseTime = new ParseTime(date);
         var showTime = new ShowTime(parseTime.hours, parseTime.minutes);
@@ -19,18 +18,19 @@ requirejs(['parseTime', 'showTime'], function (ParseTime, ShowTime) {
         if(trigger){
             var seconds = date.getSeconds();
             var secondsToWait = (60-seconds)*1000;
-            setTimeout(function(){ start() }, secondsToWait);
+            setTimeout(function(){ displayTime() }, secondsToWait);
         }
         else{
-            setTimeout(function(){ start() }, 60000);
+            setTimeout(function(){ displayTime() }, 60000);
         }
     };
 
     (function(){
-        start(true);
+        displayTime(true);
     })();
 
 });
+
 define(function(){
     'use strict';
 
@@ -50,7 +50,9 @@ define(function(){
     };
 
     return ParseTime;
+
 });
+
 define(function(){
     'use strict';
 
@@ -104,7 +106,6 @@ define(function(){
                 this.addTimeItem(selector);
             }
             else if((this.hours === 12) && (this.minutes === 0)){
-                console.log('noon');
                 var selector = 'noon';
                 this.addTimeItem(selector);
             }
@@ -174,7 +175,6 @@ define(function(){
 
         },
 
-
         displayTime: function(){
             this.timeToDisplay();
             for(var i = 0; i < this.currentTime.length; i++){
@@ -184,11 +184,14 @@ define(function(){
 
         eraseCurrentTime: function(){
             var timeToErase = document.getElementsByClassName('light');
-            for(var i = 0; i < timeToErase.length; i++){
+            var counter = timeToErase.length;
+            for(var i = 0; i < counter; i++){
                 timeToErase[0].classList.remove('light');
             }
+            this.currentTime = [];
         }
     };
+
     return ShowTime;
 
 });
