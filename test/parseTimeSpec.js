@@ -10,18 +10,6 @@ define(['src/scripts/parseTime'], function(ParseTime){
             parseTime = new ParseTime();
         });
 
-        it('expects module to be defined', function() {
-            expect(parseTime).toBeDefined();
-        });
-
-        it('expects findHours method to be defined', function() {
-            expect(parseTime.findHours).toBeDefined();
-        });
-
-        it('expects findMinutes method to be defined', function() {
-            expect(parseTime.findMinutes).toBeDefined();
-        });
-
         it('expects variable hours to be defined', function() {
             expect(parseTime.hours).toBeDefined();
         });
@@ -51,18 +39,6 @@ define(['src/scripts/parseTime'], function(ParseTime){
             parseTime = new ParseTime(date);
         });
 
-        it('expects module to be defined', function() {
-            expect(parseTime).toBeDefined();
-        });
-
-        it('expects findHours method to be defined', function() {
-            expect(parseTime.findHours).toBeDefined();
-        });
-
-        it('expects findMinutes method to be defined', function() {
-            expect(parseTime.findMinutes).toBeDefined();
-        });
-
         it('expects variable hours to be defined', function() {
             expect(parseTime.hours).toBeDefined();
         });
@@ -77,6 +53,20 @@ define(['src/scripts/parseTime'], function(ParseTime){
 
         it('expects variable minutes to be 13', function() {
             expect(parseTime.minutes).toBe(13);
+        });
+
+        // test method findHours
+
+        it('expects method findHours take "October 13, 2014 21:13:00" and return 21', function() {
+            var date = new Date("October 13, 2014 21:13:00");
+            expect(parseTime.findHours(date)).toBe(21);
+        });
+
+        // test method findMinutes
+
+        it('expects method findMinutes take "October 13, 2014 21:13:00" and return 13', function() {
+            var date = new Date("October 13, 2014 21:13:00");
+            expect(parseTime.findMinutes(date)).toBe(13);
         });
 
     });

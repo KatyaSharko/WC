@@ -7,10 +7,13 @@ define(function(){
     }
 
     ParseTime.prototype = {
+
         constructor :ParseTime,
+
         findHours: function(time){
             return time.getHours();
         },
+
         findMinutes: function(time){
             return time.getMinutes();
         }

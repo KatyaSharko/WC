@@ -23,7 +23,7 @@ requirejs(['parseTime', 'showTime'], function (ParseTime, ShowTime) {
         else{
             setTimeout(function(){ displayTime() }, 60000);
         }
-    };
+    }
 
     (function(){
         displayTime(true);

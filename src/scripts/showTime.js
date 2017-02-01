@@ -1,140 +1,147 @@
-define(function(){
+define(function () {
     'use strict';
 
-    function ShowTime(hours, minutes){
+    function ShowTime(hours, minutes) {
         this.hours = (hours) ? hours : 0;
         this.minutes = (minutes) ? minutes : 0;
-        this.currentTime = [];
     }
 
     ShowTime.prototype = {
         constructor: ShowTime,
-        addTimeItem: function(selector){
-            var item = document.getElementsByClassName(selector);
-            for(var i = 0; i < item.length; i++) {
-                this.currentTime.push(item[i]);
+
+        addTimeItems: function (allSelectors, selectors) {
+            for (var i = 0; i < selectors.length; i++) {
+                allSelectors.push(selectors[i]);
             }
+            return allSelectors;
         },
 
-        minutesToDisplay: function(minutes){
-            if(minutes < 30){
-                if(minutes <= 20){
-                    if(minutes === 15) {
-                        this.addTimeItem('a');
-                        var selector =  '' + minutes + 'min';
-                        this.addTimeItem(selector);
+        minutesToDisplay: function () {
+            var selectors = [];
+            var minutes = this.minutes;
+            if (minutes > 30)
+                minutes = 60 - minutes;
+            if (minutes < 30) {
+                if (minutes <= 20) {
+                    if (minutes === 15) {
+                        selectors.push('a');
+                        selectors.push('' + minutes + 'min');
                     }
-                    else{
-                        var selector =  '' + minutes + 'min';
-                        this.addTimeItem(selector);
-                    }
+                    else
+                        selectors.push('' + minutes + 'min');
                 }
-                else{
-                    var remainder = minutes - 20;
-                    var selector =  '' + 20 + 'min';
-                    this.addTimeItem(selector);
-                    var selector =  '' + remainder + 'min';
-                    this.addTimeItem(selector);
+                else {
+                    selectors.push('' + 20 + 'min');
+                    selectors.push('' + minutes - 20 + 'min');
                 }
             }
             else {
-                this.addTimeItem('half');
+                selectors.push('half');
             }
+            return selectors;
         },
 
-        hoursToDisplay: function(trigger){
-            if(trigger)
-                this.hours++;
+        hoursToDisplay: function () {
+            var selectors = [];
+            var hours = this.hours;
+            if (this.minutes > 30)
+                hours++;
+            if (ShowTime.isMidnight(hours, this.minutes)) {
+                selectors.push('midnight');
+            }
+            else if (ShowTime.isNoon(hours, this.minutes)) {
+                selectors.push('noon');
+            }
+            else if ((hours <= 12) && (hours >= 0))
+                selectors.push('' + hours + 'hr');
+            else if ((hours > 12) && (hours < 24))
+                selectors.push('' + hours-12 + 'hr');
+            else
+                selectors.push('' + hours-24 + 'hr');
+            return selectors;
+        },
 
-            if((this.hours === 0) && (this.minutes === 0)){
-                var selector = 'midnight';
-                this.addTimeItem(selector);
-            }
-            else if((this.hours === 12) && (this.minutes === 0)){
-                var selector = 'noon';
-                this.addTimeItem(selector);
-            }
-            else if((this.hours <= 12) && (this.hours >= 0)){
-                var selector = '' + this.hours + 'hr';
-                this.addTimeItem(selector);
-            }
-            else if((this.hours > 12) && (this.hours < 24)){
-                var hour = this.hours - 12;
-                var selector = '' + hour + 'hr';
-                this.addTimeItem(selector);
+        periodToDisplay: function () {
+            var selectors = [];
+            if (ShowTime.isNight(this.hours)) {
+                selectors.push('at');
+                selectors.push('night');
             }
             else {
-                var hour = this.hours - 24;
-                var selector = '' + hour + 'hr';
-                this.addTimeItem(selector);
-            }
-            if(trigger)
-                this.hours--;
-        },
-
-        periodToDisplay: function(){
-            if((this.hours >= 0) && (this.hours < 6)){
-                this.addTimeItem('at');
-                this.addTimeItem('night');
-            }
-            if((this.hours >=6 ) && (this.hours < 12)){
-                this.addTimeItem('in');
-                this.addTimeItem('the');
-                this.addTimeItem('morning');
-            }
-            if((this.hours >=12 ) && (this.hours < 18)){
-                this.addTimeItem('in');
-                this.addTimeItem('the');
-                this.addTimeItem('afternoon');
-            }
-            if((this.hours >=18 ) && (this.hours < 24)){
-                this.addTimeItem('in');
-                this.addTimeItem('the');
-                this.addTimeItem('evening');
-            }
-        },
-
-        timeToDisplay: function() {
-            this.addTimeItem('general');
-            if(this.minutes !== 0){
-                if(this.minutes <= 30){
-                    this.minutesToDisplay(this.minutes);
-                    this.addTimeItem('past');
-                    this.hoursToDisplay();
+                selectors.push('in');
+                selectors.push('the');
+                if (ShowTime.isMorning(this.hours)) {
+                    selectors.push('morning');
                 }
-                else{
-                    this.minutesToDisplay(30-(this.minutes-30));
-                    this.addTimeItem('to');
-                    this.hoursToDisplay(true);
+                if (ShowTime.isAfternoon(this.hours)) {
+                    selectors.push('afternoon');
+                }
+                if (ShowTime.isEvening(this.hours)) {
+                    selectors.push('evening');
                 }
             }
-            else{
-                this.hoursToDisplay();
-                if((this.hours !== 0) && (this.hours !== 12))
-                    this.addTimeItem('oclock');
-            }
-            if(((this.hours === 0) && (this.minutes === 0)) || ((this.hours === 12) && (this.minutes === 0))){}
-            else{
-                this.periodToDisplay();
-            }
-
+            return selectors;
         },
 
-        displayTime: function(){
-            this.timeToDisplay();
-            for(var i = 0; i < this.currentTime.length; i++){
-                this.currentTime[i].classList.add('light');
+        timeToDisplay: function () {
+            var selectors = [];
+            selectors.push('general');
+            if (this.minutes !== 0) {
+                selectors = this.addTimeItems(selectors, this.minutesToDisplay());
+                if (this.minutes <= 30)
+                    selectors.push('past');
+                else
+                    selectors.push('to');
+            }
+            selectors = this.addTimeItems(selectors, this.hoursToDisplay());
+            if ((this.minutes === 0) && (this.hours !== 0) && (this.hours !== 12))
+                selectors.push('oclock');
+            if (ShowTime.isNoon(this.hours, this.minutes) || ShowTime.isMidnight(this.hours, this.minutes)){}
+            else
+                selectors = this.addTimeItems(selectors, this.periodToDisplay());
+            return selectors;
+        },
+
+        displayTime: function () {
+            var timeSelectors = this.timeToDisplay();
+            for (var i = 0; i < timeSelectors.length; i++) {
+                var items = document.getElementsByClassName(timeSelectors[i]);
+                for (var j = 0; j < items.length; j++) {
+                    items[j].classList.add('light');
+                }
             }
         },
 
-        eraseCurrentTime: function(){
+        eraseCurrentTime: function () {
             var timeToErase = document.getElementsByClassName('light');
             var counter = timeToErase.length;
-            for(var i = 0; i < counter; i++){
+            for (var i = 0; i < counter; i++)
                 timeToErase[0].classList.remove('light');
-            }
-            this.currentTime = [];
         }
+    };
+
+    ShowTime.isNight = function (hours) {
+        return (hours >= 0) && (hours < 6);
+    };
+
+    ShowTime.isMorning = function (hours) {
+        return (hours >= 6 ) && (hours < 12);
+    };
+
+    ShowTime.isAfternoon = function (hours) {
+        return (hours >= 12 ) && (hours < 18);
+    };
+
+    ShowTime.isEvening = function (hours) {
+        return (hours >= 18 ) && (hours < 24);
+    };
+
+    ShowTime.isNoon = function (hours, minutes) {
+        return (hours === 12) && (minutes === 0);
+    };
+
+    ShowTime.isMidnight = function (hours, minutes) {
+        return (hours === 0) && (minutes === 0);
     };
 
     return ShowTime;
