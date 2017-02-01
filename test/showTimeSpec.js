@@ -39,6 +39,26 @@ define(['src/scripts/showTime'], function (ShowTime) {
             showTime = new ShowTime();
         });
 
+        it('expects variable hours to be defined', function () {
+            showTime = new ShowTime(10,11);
+            expect(showTime.hours).toBeDefined();
+        });
+
+        it('expects variable minutes to be defined', function () {
+            showTime = new ShowTime(10,11);
+            expect(showTime.minutes).toBeDefined();
+        });
+
+        it('expects variable hours to be 11', function () {
+            var showTime = new ShowTime(11,13);
+            expect(showTime.hours).toBe(11);
+        });
+
+        it('expects variable minutes to be 13', function () {
+            var showTime = new ShowTime(11,13);
+            expect(showTime.minutes).toBe(13);
+        });
+
         //test method addTimeItems
 
         it('expects method addTimeItems concat two arrays', function () {
