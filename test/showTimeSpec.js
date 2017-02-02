@@ -59,17 +59,6 @@ define(['src/scripts/showTime'], function (ShowTime) {
             expect(showTime.minutes).toBe(13);
         });
 
-        //test method addTimeItems
-
-        it('expects method addTimeItems concat two arrays', function () {
-            var arr1 = ['general'];
-            var arr2 = ['to'];
-            var result = showTime.addTimeItems(arr1, arr2);
-            expect(result.length).toBe(2);
-            expect(result).toContain('general');
-            expect(result).toContain('to');
-        });
-
         //tests for method minutesToDisplay
 
         it('expects method minutesToDisplay for 15 minutes return array with two elements "a" and "15min"', function () {
