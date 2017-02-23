@@ -40,22 +40,22 @@ define(['src/scripts/showTime'], function (ShowTime) {
         });
 
         it('expects variable hours to be defined', function () {
-            showTime = new ShowTime(10,11);
+            showTime = new ShowTime(10, 11);
             expect(showTime.hours).toBeDefined();
         });
 
         it('expects variable minutes to be defined', function () {
-            showTime = new ShowTime(10,11);
+            showTime = new ShowTime(10, 11);
             expect(showTime.minutes).toBeDefined();
         });
 
         it('expects variable hours to be 11', function () {
-            var showTime = new ShowTime(11,13);
+            var showTime = new ShowTime(11, 13);
             expect(showTime.hours).toBe(11);
         });
 
         it('expects variable minutes to be 13', function () {
-            var showTime = new ShowTime(11,13);
+            var showTime = new ShowTime(11, 13);
             expect(showTime.minutes).toBe(13);
         });
 
@@ -148,7 +148,7 @@ define(['src/scripts/showTime'], function (ShowTime) {
 
         it('expects method  periodToDisplay for 5 hours return array with two elements "at" and "night"', function () {
             showTime.hours = 5;
-            var result = showTime. periodToDisplay();
+            var result = showTime.periodToDisplay();
             expect(result.length).toBe(2);
             expect(result).toContain('at');
             expect(result).toContain('night');
@@ -156,7 +156,7 @@ define(['src/scripts/showTime'], function (ShowTime) {
 
         it('expects method  periodToDisplay for 7 hours return array with three elements "in", "the" and "morning"', function () {
             showTime.hours = 7;
-            var result = showTime. periodToDisplay();
+            var result = showTime.periodToDisplay();
             expect(result.length).toBe(3);
             expect(result).toContain('in');
             expect(result).toContain('the');
@@ -165,7 +165,7 @@ define(['src/scripts/showTime'], function (ShowTime) {
 
         it('expects method  periodToDisplay for 13 hours return array with three elements "in", "the" and "afternoon"', function () {
             showTime.hours = 13;
-            var result = showTime. periodToDisplay();
+            var result = showTime.periodToDisplay();
             expect(result.length).toBe(3);
             expect(result).toContain('in');
             expect(result).toContain('the');
@@ -174,7 +174,7 @@ define(['src/scripts/showTime'], function (ShowTime) {
 
         it('expects method  periodToDisplay for 21 hours return array with three elements "in", "the" and "evening"', function () {
             showTime.hours = 21;
-            var result = showTime. periodToDisplay();
+            var result = showTime.periodToDisplay();
             expect(result.length).toBe(3);
             expect(result).toContain('in');
             expect(result).toContain('the');
@@ -261,7 +261,7 @@ define(['src/scripts/showTime'], function (ShowTime) {
         //test method ShowTime.isNight
 
         it('expects method ShowTime.isNight for 5 hours return true ', function () {
-           expect(ShowTime.isNight(5)).toBe(true);
+            expect(ShowTime.isNight(5)).toBe(true);
         });
 
         it('expects method ShowTime.isNight for 16 hours return false ', function () {
@@ -301,21 +301,21 @@ define(['src/scripts/showTime'], function (ShowTime) {
         //test method ShowTime.isNoon
 
         it('expects method ShowTime.isNoon for 12 hours 0 minutes return true ', function () {
-            expect(ShowTime.isNoon(12,0)).toBe(true);
+            expect(ShowTime.isNoon(12, 0)).toBe(true);
         });
 
         it('expects method ShowTime.isNoon for 7 hours 20 minutes return false ', function () {
-            expect(ShowTime.isNoon(7,20)).toBe(false);
+            expect(ShowTime.isNoon(7, 20)).toBe(false);
         });
 
         //test method ShowTime.isMidnight
 
         it('expects method ShowTime.isMidnight for 0 hours 0 minutes return true ', function () {
-            expect(ShowTime.isMidnight(0,0)).toBe(true);
+            expect(ShowTime.isMidnight(0, 0)).toBe(true);
         });
 
         it('expects method ShowTime.isMidnight for 7 hours 20 minutes return false ', function () {
-            expect(ShowTime.isMidnight(7,20)).toBe(false);
+            expect(ShowTime.isMidnight(7, 20)).toBe(false);
         });
 
     });
