@@ -9,4 +9,4 @@
  - Launch default Gulp task from command line `gulp`
  - Launch tests from command line `karma start`
 
- [Contribution guidelines for this project](docs/CONTRIBUTING.md)
+ [Contribution guidelines for this project](docs/README.md)
